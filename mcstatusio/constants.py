@@ -14,9 +14,9 @@ from dataclasses import dataclass
 
 BASE_URL = "https://api.mcstatus.io/v2"
 
-DEFAULT_TIMEOUT = 5  # seconds
+DEFAULT_TIMEOUT = 5  # Timeout in seconds
 
-# Generic
+# Generic Constants
 
 
 @dataclass(frozen=True)
