@@ -423,6 +423,7 @@ dev = [
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "sphinx" },
+    { name = "sphinx-conestack-theme" },
     { name = "sphinx-rtd-theme" },
 ]
 
@@ -438,6 +439,7 @@ dev = [
     { name = "pytest", specifier = ">=8.4.2" },
     { name = "pytest-asyncio", specifier = ">=1.2.0" },
     { name = "sphinx", specifier = ">=8.2.3" },
+    { name = "sphinx-conestack-theme", specifier = ">=1.1.1" },
     { name = "sphinx-rtd-theme", specifier = ">=3.0.2" },
 ]
 
@@ -742,6 +744,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/38/ad/4360e50ed56cb483667b8e6dadf2d3fda62359593faabbe749a27c4eaca6/sphinx-8.2.3.tar.gz", hash = "sha256:398ad29dee7f63a75888314e9424d40f52ce5a6a87ae88e7071e80af296ec348", size = 8321876, upload-time = "2025-03-02T22:31:59.658Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/31/53/136e9eca6e0b9dc0e1962e2c908fbea2e5ac000c2a2fbd9a35797958c48b/sphinx-8.2.3-py3-none-any.whl", hash = "sha256:4405915165f13521d875a8c29c8970800a0141c14cc5416a38feca4ea5d9b9c3", size = 3589741, upload-time = "2025-03-02T22:31:56.836Z" },
+]
+
+[[package]]
+name = "sphinx-conestack-theme"
+version = "1.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "sphinx" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/cd/69/6f8bd1dcf75e157e01b6f30b4e063fca25cf07e376e8a1395bfba86d89ac/sphinx_conestack_theme-1.1.1.tar.gz", hash = "sha256:c91db49111c61cbab2d2c973a47fe9fe2211a59eb3615dee5cb44a1d1cae8843", size = 628052, upload-time = "2025-12-05T05:30:01.253Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7d/16/361728583086a490a20aedefe477658a8f55203794674fb29cc25986935a/sphinx_conestack_theme-1.1.1-py3-none-any.whl", hash = "sha256:0967cde7ed59cb853372a040be1aec0d402d4d2c3b4af06e6f5a312e9de09436", size = 637846, upload-time = "2025-12-05T05:29:54.499Z" },
 ]
 
 [[package]]
