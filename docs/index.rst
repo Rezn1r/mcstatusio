@@ -12,6 +12,7 @@ Welcome to mcstatusio's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   mcstatusio
    installation
    usage
+   mcstatusio
+
