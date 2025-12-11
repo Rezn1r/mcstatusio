@@ -33,3 +33,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'conestack'
 html_static_path = ['_static']
+html_theme_options = {
+    'logo_title': 'MCStatusIO'
+}
