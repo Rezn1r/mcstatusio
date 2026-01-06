@@ -4,6 +4,7 @@
 [![Lint](https://github.com/rzn1r/mcstatusio/actions/workflows/lint.yml/badge.svg)](https://github.com/rzn1r/mcstatusio/actions/workflows/lint.yml)
 ![PyPI - Version](https://img.shields.io/pypi/v/mcstatusio)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mcstatusio)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/mcstatusio)
 
 A Python wrapper for the [mcstatus.io](https://mcstatus.io/) API that provides an easy way to query Minecraft server status for both Java Edition and Bedrock Edition servers. 
 
