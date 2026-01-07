@@ -192,12 +192,12 @@ class JavaServerStatusOffline:
     """
 
     online: bool
-    hostname: str
+    hostname: str | None
     port: int
     ip_address: str | None
-    eula_blocked: bool
-    retrieved_at: int
-    expiries_at: int
+    eula_blocked: bool | None
+    retrieved_at: int | None
+    expiries_at: int | None
     srv: JavaSRV | None
 
 

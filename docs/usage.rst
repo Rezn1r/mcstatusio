@@ -113,7 +113,7 @@ Handle potential errors when querying servers:
 .. code-block:: python
 
     from mcstatusio import JavaServer
-    import requests
+    from mcstatusio.exceptions import McstatusioTimeoutError, McstatusioConnectionError, McstatusioHTTPError
 
     server = JavaServer("invalid.server.address")
 
@@ -123,10 +123,12 @@ Handle potential errors when querying servers:
             print("Server is online")
         else:
             print("Server is offline")
-    except requests.exceptions.Timeout:
+    except McstatusioTimeoutError:
         print("Request timed out")
-    except requests.exceptions.RequestException as e:
-        print(f"Error querying server: {e}")
+    except McstatusioConnectionError as e:
+        print(f"Connection error: {e}")
+    except McstatusioHTTPError as e:
+        print(f"HTTP error: {e}")
 
 
 Custom Timeout

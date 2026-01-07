@@ -121,7 +121,7 @@ if status.online:
 
 ```python
 from mcstatusio import JavaServer
-import requests
+from mcstatusio.exceptions import McstatusioTimeoutError, McstatusioConnectionError
 
 server = JavaServer("invalid.server.address")
 
@@ -131,7 +131,7 @@ try:
         print("Server is online")
     else:
         print("Server is offline")
-except requests.exceptions.Timeout:
+except McstatusioTimeoutError:
     print("Request timed out")
 except requests.exceptions.RequestException as e:
     print(f"Error querying server: {e}")

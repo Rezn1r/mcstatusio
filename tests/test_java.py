@@ -1,6 +1,7 @@
-# tests/test_java.py 
+# tests/test_java.py
 from mcstatusio import JavaServer
-import pytest 
+import pytest
+
 
 @pytest.mark.asyncio
 async def test_java_async_server_status():
@@ -12,6 +13,7 @@ async def test_java_async_server_status():
     assert isinstance(status.motd.clean, str)
     assert status.online is True
 
+
 def test_java_sync_server_status():
     server = JavaServer("donutsmp.net")
     status = server.status()
@@ -20,4 +22,3 @@ def test_java_sync_server_status():
     assert status.players.max > 0
     assert isinstance(status.motd.clean, str)
     assert status.online is True
-

@@ -6,9 +6,7 @@ servers using the mcstatus.io API. It supports both synchronous and asynchronous
 requests.
 """
 
-import requests
-import asyncio
-import aiohttp
+import httpx
 from dataclasses import dataclass
 from typing import Optional, Literal
 
@@ -27,6 +25,7 @@ from .exceptions import (
     McstatusioHTTPError,
     McstatusioTimeoutError,
 )
+
 
 @dataclass(frozen=True)
 class BedrockServerStatusResponse(StatusResponse):
@@ -169,9 +168,9 @@ class BedrockServer:
             information like port and IP address.
 
         Raises:
-            requests.exceptions.HTTPError: If the API request fails
-            requests.exceptions.Timeout: If the request times out
-            requests.exceptions.RequestException: For other request-related errors
+            httpx.HTTPStatusError: If the API request fails
+            httpx.TimeoutException: If the request times out
+            httpx.RequestError: For other request-related errors
 
         Example:
             >>> server = BedrockServer("play.cubecraft.net")
@@ -186,17 +185,18 @@ class BedrockServer:
         url = f"{BASE_URL}/status/bedrock/{hostname}:{port}"
         params = {"timeout": self.timeout}
         try:
-            response = requests.get(url, params=params, timeout=self.timeout)
-            response.raise_for_status()
-        except requests.exceptions.Timeout as e:
+            with httpx.Client(timeout=self.timeout) as client:
+                response = client.get(url, params=params)
+                response.raise_for_status()
+                data = response.json()
+        except httpx.TimeoutException as e:
             raise McstatusioTimeoutError("Request timed out") from e
-        except requests.exceptions.ConnectionError as e:
+        except httpx.ConnectError as e:
             raise McstatusioConnectionError("Connection error occurred") from e
-        except requests.exceptions.HTTPError as e:
+        except httpx.HTTPStatusError as e:
             raise McstatusioHTTPError(
                 f"HTTP error occurred: {e.response.status_code}"
             ) from e
-        data = response.json()
         return self._build_response(data)
 
     async def async_status(
@@ -216,9 +216,9 @@ class BedrockServer:
             information like port and IP address.
 
         Raises:
-            aiohttp.ClientError: If the API request fails
-            asyncio.TimeoutError: If the request times out
-            aiohttp.ClientResponseError: For HTTP error responses
+            httpx.HTTPStatusError: If the API request fails
+            httpx.TimeoutException: If the request times out
+            httpx.RequestError: For other request-related errors
 
         Example:
             >>> import asyncio
@@ -236,16 +236,16 @@ class BedrockServer:
         url = f"{BASE_URL}/status/bedrock/{hostname}:{port}"
         params = {"timeout": self.timeout}
         try:
-            async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=self.timeout)) as session:
-                async with session.get(url, params=params) as response:
-                    response.raise_for_status()
-                    data = await response.json()
-        except asyncio.TimeoutError as e:
+            async with httpx.AsyncClient(timeout=self.timeout) as client:
+                response = await client.get(url, params=params)
+                response.raise_for_status()
+                data = response.json()
+        except httpx.TimeoutException as e:
             raise McstatusioTimeoutError("Request timed out") from e
-        except aiohttp.ClientConnectionError as e:
+        except httpx.ConnectError as e:
             raise McstatusioConnectionError("Connection error occurred") from e
-        except aiohttp.ClientResponseError as e:
+        except httpx.HTTPStatusError as e:
             raise McstatusioHTTPError(
-                f"HTTP error occurred: {e.status}"
+                f"HTTP error occurred: {e.response.status_code}"
             ) from e
         return self._build_response(data)

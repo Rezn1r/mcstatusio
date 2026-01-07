@@ -2,6 +2,7 @@
 from mcstatusio import BedrockServer
 import pytest
 
+
 @pytest.mark.asyncio
 async def test_bedrock_async_server_status():
     server = BedrockServer("donutsmp.net", 19132)
@@ -12,6 +13,7 @@ async def test_bedrock_async_server_status():
     assert isinstance(status.motd.clean, str)
     assert isinstance(status.version.name, str)
 
+
 def test_bedrock_sync_server_status():
     server = BedrockServer("donutsmp.net", 19132)
     status = server.status()
@@ -20,5 +22,3 @@ def test_bedrock_sync_server_status():
     assert status.players.max > 0
     assert isinstance(status.motd.clean, str)
     assert isinstance(status.version.name, str)
-
-

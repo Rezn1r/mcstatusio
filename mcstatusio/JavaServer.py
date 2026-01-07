@@ -6,9 +6,7 @@ servers using the mcstatus.io API. It supports both synchronous and asynchronous
 requests.
 """
 
-import requests
-import asyncio
-import aiohttp
+import httpx
 from dataclasses import dataclass
 from typing import Optional
 from .constants import (
@@ -30,6 +28,7 @@ from .exceptions import (
     McstatusioHTTPError,
     McstatusioTimeoutError,
 )
+
 
 @dataclass(frozen=True)
 class JavaServerStatusResponse(StatusResponse):
@@ -53,7 +52,7 @@ class JavaServerStatusResponse(StatusResponse):
 
     version: JavaVersion
     players: JavaPlayers
-    hostname: str
+    hostname: Optional[str]
     motd: MOTD
     icon: Optional[str]
     mods: list[JavaMods] | None
@@ -134,7 +133,7 @@ class JavaServer:
                 online=data["online"],
                 ip_address=data["ip_address"],
                 eula_blocked=data.get("eula_blocked"),
-                retrieved_at=data.get("retrieved_at"),
+                retrieved_at=data.get("retrieved_at", 0),
                 expiries_at=data.get("expiries_at"),
                 port=data["port"],
                 version=JavaVersion(
@@ -189,9 +188,9 @@ class JavaServer:
             information like hostname, port, and IP address.
 
         Raises:
-            requests.exceptions.HTTPError: If the API request fails
-            requests.exceptions.Timeout: If the request times out
-            requests.exceptions.RequestException: For other request-related errors
+            httpx.HTTPStatusError: If the API request fails
+            httpx.TimeoutException: If the request times out
+            httpx.RequestError: For other request-related errors
 
         Example:
             >>> server = JavaServer("mc.hypixel.net")
@@ -205,14 +204,15 @@ class JavaServer:
         url = f"{BASE_URL}/status/java/{hostname}:{port}"
         params = {"timeout": self.timeout}
         try:
-            response = requests.get(url, params=params, timeout=self.timeout)
-            response.raise_for_status()
-            data = response.json()
-        except requests.exceptions.Timeout as e:
+            with httpx.Client(timeout=self.timeout) as client:
+                response = client.get(url, params=params)
+                response.raise_for_status()
+                data = response.json()
+        except httpx.TimeoutException as e:
             raise McstatusioTimeoutError("Request timed out") from e
-        except requests.exceptions.ConnectionError as e:
+        except httpx.ConnectError as e:
             raise McstatusioConnectionError("Connection error occurred") from e
-        except requests.exceptions.HTTPError as e:
+        except httpx.HTTPStatusError as e:
             raise McstatusioHTTPError(
                 f"HTTP error occurred: {e.response.status_code}"
             ) from e
@@ -233,9 +233,9 @@ class JavaServer:
             information like hostname, port, and IP address.
 
         Raises:
-            aiohttp.ClientError: If the API request fails
-            asyncio.TimeoutError: If the request times out
-            aiohttp.ClientResponseError: For HTTP error responses
+            httpx.HTTPStatusError: If the API request fails
+            httpx.TimeoutException: If the request times out
+            httpx.RequestError: For other request-related errors
 
         Example:
             >>> import asyncio
@@ -252,18 +252,16 @@ class JavaServer:
         url = f"{BASE_URL}/status/java/{hostname}:{port}"
         params = {"timeout": self.timeout}
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(
-                    url, params=params, timeout=self.timeout
-                ) as response:
-                    response.raise_for_status()
-                    data = await response.json()
-        except asyncio.TimeoutError as e:
+            async with httpx.AsyncClient(timeout=self.timeout) as client:
+                response = await client.get(url, params=params)
+                response.raise_for_status()
+                data = response.json()
+        except httpx.TimeoutException as e:
             raise McstatusioTimeoutError("Request timed out") from e
-        except aiohttp.ClientConnectionError as e:
+        except httpx.ConnectError as e:
             raise McstatusioConnectionError("Connection error occurred") from e
-        except aiohttp.ClientResponseError as e:
+        except httpx.HTTPStatusError as e:
             raise McstatusioHTTPError(
-                f"HTTP error occurred: {e.status}"
+                f"HTTP error occurred: {e.response.status_code}"
             ) from e
         return self._build_response(data)
