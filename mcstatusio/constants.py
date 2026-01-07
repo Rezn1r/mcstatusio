@@ -9,12 +9,16 @@ Constants:
     BASE_URL: The base URL for the mcstatus.io API (v2)
     DEFAULT_TIMEOUT: Default request timeout in seconds (5)
 """
+import os
 
 from dataclasses import dataclass
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_URL = "https://api.mcstatus.io/v2"
 
-DEFAULT_TIMEOUT = 5  # Timeout in seconds
+DEFAULT_TIMEOUT = int(os.getenv("MCSTATUS_TIMEOUT", 5))
 
 # Generic Constants
 
