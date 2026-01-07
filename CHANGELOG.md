@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v1.0.7] - 2026-01-07
+
+
+
+### BUG FIXES
+
+- Add type guard to tests and changed server test to demo.mcstatus.io ([`770424a`](https://github.com/Rezn1r/mcstatusio/commit/770424a81e98986ee052ef7e7c095133fabff795))
+- Load environment variables and update DEFAULT_TIMEOUT to use MCSTATUS_TIMEOUT ([`1e47329`](https://github.com/Rezn1r/mcstatusio/commit/1e473293b29b790714b6e03dbf98c0dbb2d811b1))
+
+
 ## [v1.0.6] - 2026-01-07
 
 
