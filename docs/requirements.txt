@@ -1,4 +1,4 @@
 sphinx
 sphinx-conestack-theme
-aiohttp
-requests
+httpx
+python-dotenv
