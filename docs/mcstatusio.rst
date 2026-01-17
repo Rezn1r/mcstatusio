@@ -28,6 +28,14 @@ mcstatusio.constants module
    :show-inheritance:
    :undoc-members:
 
+mcstatusio.exceptions module
+----------------------------
+
+.. automodule:: mcstatusio.exceptions
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 Module contents
 ---------------
 
