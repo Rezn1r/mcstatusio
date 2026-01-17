@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v1.0.8] - 2026-01-17
+
+
+
+### BUG FIXES
+
+- Update player attribute from 'sample' to 'list' and add UUID to Player model; bump version to 1.0.7 ([`9d87d7d`](https://github.com/Rezn1r/mcstatusio/commit/9d87d7d4e6b8658b8318f762447213780aab62c4))
+
+### DOCUMENTATION
+
+- Add mcstatusio.exceptions module documentation and create modules.rst file ([`f20c218`](https://github.com/Rezn1r/mcstatusio/commit/f20c2187dcb6c4c2dc67b79aa82b498bb3ba366a))
+
+
 ## [v1.0.7] - 2026-01-07
 
 
