@@ -12,6 +12,7 @@ Constants:
 import os
 
 from dataclasses import dataclass
+import uuid
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -29,11 +30,13 @@ class Player:
     Represents a player connected to the server.
 
     Attributes:
+        uuid: Player's UUID (if available)
         raw: Raw player name with formatting codes
         clean: Clean player name without formatting
         html: HTML-formatted player name
     """
 
+    uuid : uuid.UUID | None
     raw: str
     clean: str
     html: str
@@ -156,7 +159,7 @@ class JavaPlayers:
 
     max: int
     online: int
-    sample: list[Player] | None
+    list: list[Player] | None
 
 
 @dataclass(frozen=True)

@@ -147,7 +147,7 @@ class JavaServer:
                 players=JavaPlayers(
                     max=data["players"].get("max"),
                     online=data["players"].get("online"),
-                    sample=data["players"].get("sample"),
+                    list=data["players"].get("list"),
                 ),
                 hostname=data.get("hostname"),
                 motd=MOTD(
