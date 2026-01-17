@@ -308,7 +308,6 @@ name = "mcstatusio"
 version = "1.0.8"
 source = { virtual = "." }
 dependencies = [
-    { name = "git-cliff" },
     { name = "httpx" },
     { name = "python-dotenv" },
 ]
@@ -316,6 +315,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "black" },
+    { name = "git-cliff" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "sphinx" },
@@ -324,7 +324,6 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "git-cliff", specifier = ">=2.11.0" },
     { name = "httpx", specifier = ">=0.24.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
 ]
@@ -332,6 +331,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "black", specifier = ">=25.9.0" },
+    { name = "git-cliff", specifier = ">=2.11.0" },
     { name = "pytest", specifier = ">=8.4.2" },
     { name = "pytest-asyncio", specifier = ">=1.2.0" },
     { name = "sphinx", specifier = ">=8.2.3" },
