@@ -20,4 +20,4 @@ from .BedrockServer import BedrockServer
 from .JavaServer import JavaServer
 
 __all__ = ["BedrockServer", "JavaServer"]
-__version__ = "1.0.8"
+__version__ = "1.0.9"
