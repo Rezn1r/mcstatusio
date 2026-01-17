@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v1.0.9] - 2026-01-17
+
+
+
+### BUG FIXES
+
+- Move  to dev dependencies ([`4891696`](https://github.com/Rezn1r/mcstatusio/commit/48916963780ce6ee8add64f048afd42d055edb53))
+- Add new dependencies ([`1aa6865`](https://github.com/Rezn1r/mcstatusio/commit/1aa6865db948590979677e9fc1ff22b282e98113))
+
+### DOCUMENTATION
+
+- Update docs ([`9028cb6`](https://github.com/Rezn1r/mcstatusio/commit/9028cb6ed0508c7f2f385859994c4e2505d6b186))
+
+### FEATURES
+
+- Add exceptions in __init__.py ([`a7fbfd3`](https://github.com/Rezn1r/mcstatusio/commit/a7fbfd306cd77a9c601fa0c0867f51c582cea0cd))
+
+
 ## [v1.0.8] - 2026-01-17
 
 
