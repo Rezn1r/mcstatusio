@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, os.path.abspath(".."))
 
 project = "mcstatusio"
-copyright = "2025, Rezn1r"
+copyright = "2026, Rezn1r"
 author = "Rezn1r"
 
 # -- General configuration ---------------------------------------------------
@@ -33,4 +33,4 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "conestack"
 html_static_path = ["_static"]
-html_theme_options = {"logo_title": "MCStatusIO"}
+html_theme_options = {"logo_title": "mcstatusio"}
