@@ -18,7 +18,7 @@ Example:
 
 from .BedrockServer import BedrockServer
 from .JavaServer import JavaServer
-from .exceptions import McstatusioConnectionError, McstatusioError, McstatusioHTTPError, McstatusioTimeoutError
+from . import error
 
-__all__ = ["BedrockServer", "JavaServer", "McstatusioConnectionError", "McstatusioError", "McstatusioHTTPError", "McstatusioTimeoutError"]
+__all__ = ["BedrockServer", "JavaServer", "error"]
 __version__ = "1.0.9"

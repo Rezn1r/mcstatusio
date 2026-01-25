@@ -20,11 +20,7 @@ from .constants import (
     MOTD,
 )
 
-from .exceptions import (
-    McstatusioConnectionError,
-    McstatusioHTTPError,
-    McstatusioTimeoutError,
-)
+from . import error
 
 
 @dataclass(frozen=True)
@@ -190,11 +186,11 @@ class BedrockServer:
                 response.raise_for_status()
                 data = response.json()
         except httpx.TimeoutException as e:
-            raise McstatusioTimeoutError("Request timed out") from e
+            raise error.TimeoutError("Request timed out") from e
         except httpx.ConnectError as e:
-            raise McstatusioConnectionError("Connection error occurred") from e
+            raise error.ConnectionError("Connection error occurred") from e
         except httpx.HTTPStatusError as e:
-            raise McstatusioHTTPError(
+            raise error.HTTPError(
                 f"HTTP error occurred: {e.response.status_code}"
             ) from e
         return self._build_response(data)
@@ -241,11 +237,11 @@ class BedrockServer:
                 response.raise_for_status()
                 data = response.json()
         except httpx.TimeoutException as e:
-            raise McstatusioTimeoutError("Request timed out") from e
+            raise error.TimeoutError("Request timed out") from e
         except httpx.ConnectError as e:
-            raise McstatusioConnectionError("Connection error occurred") from e
+            raise error.ConnectionError("Connection error occurred") from e
         except httpx.HTTPStatusError as e:
-            raise McstatusioHTTPError(
+            raise error.HTTPError(
                 f"HTTP error occurred: {e.response.status_code}"
             ) from e
         return self._build_response(data)

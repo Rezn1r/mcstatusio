@@ -2,26 +2,28 @@
 Custom exceptions for the mcstatusio package.
 """
 
+import httpx
 
-class McstatusioError(Exception):
+
+class Error(httpx.RequestError):
     """Base exception for mcstatusio."""
 
     pass
 
 
-class McstatusioTimeoutError(McstatusioError):
+class TimeoutException(httpx.TimeoutException):
     """Raised when a request times out."""
 
     pass
 
 
-class McstatusioConnectionError(McstatusioError):
+class ConnectionError(httpx.ConnectError):
     """Raised when a connection fails."""
 
     pass
 
 
-class McstatusioHTTPError(McstatusioError):
+class HTTPError(httpx.HTTPStatusError):
     """Raised when an HTTP error occurs."""
 
     pass
