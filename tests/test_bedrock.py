@@ -6,6 +6,7 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_bedrock_async_server_status():
+    """Test asynchronous server status retrieval for Bedrock servers."""
     server = BedrockServer("demo.mcstatus.io", 19132)
     status = await server.async_status()
 
@@ -19,6 +20,7 @@ async def test_bedrock_async_server_status():
 
 
 def test_bedrock_sync_server_status():
+    """Test synchronous server status retrieval for Bedrock servers."""
     server = BedrockServer("demo.mcstatus.io", 19132)
     status = server.status()
 
@@ -29,3 +31,5 @@ def test_bedrock_sync_server_status():
         assert isinstance(status.version.name, str)
     else:
         pytest.fail("Server should be online")
+
+

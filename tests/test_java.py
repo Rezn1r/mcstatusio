@@ -6,6 +6,7 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_java_async_server_status():
+    """Test asynchronous server status retrieval for Java servers."""
     server = JavaServer("demo.mcstatus.io")
     status = await server.async_status()
 
@@ -18,6 +19,7 @@ async def test_java_async_server_status():
 
 
 def test_java_sync_server_status():
+    """Test synchronous server status retrieval for Java servers."""
     server = JavaServer("demo.mcstatus.io")
     status = server.status()
 
@@ -27,3 +29,4 @@ def test_java_sync_server_status():
         assert isinstance(status.motd.clean, str)
     else:
         pytest.fail("Server should be online")
+
