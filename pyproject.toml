@@ -35,6 +35,7 @@ dev = [
     "git-cliff>=2.11.0",
     "pytest>=8.4.2",
     "pytest-asyncio>=1.2.0",
+    "ruff>=0.14.14",
     "sphinx>=8.2.3",
     "sphinx-conestack-theme>=1.1.1",
 ]
