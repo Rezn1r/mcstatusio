@@ -8,15 +8,6 @@
 
 A Python wrapper for the [mcstatus.io](https://mcstatus.io/) API that provides an easy way to query Minecraft server status for both Java Edition and Bedrock Edition servers. 
 
-## Features
-
-- 🎮 Support for both Java Edition and Bedrock Edition servers
-- 🔄 Synchronous and asynchronous API support
-- 📊 Comprehensive server information (players, version, MOTD, etc.)
-- 🚀 Simple and intuitive interface
-- 🔧 Type hints for better IDE support
-- ⚡ Lightweight with minimal dependencies
-
 ## Installation
 
 **Requirements:** Python 3.11 or higher
