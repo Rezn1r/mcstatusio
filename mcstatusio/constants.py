@@ -74,7 +74,7 @@ class StatusResponse:
         ip_address: Server IP address (if resolved)
         eula_blocked: Whether the server is blocked due to EULA violations
         retrieved_at: Unix timestamp when the status was retrieved
-        expiries_at: Unix timestamp when the cached status expires
+        expires_at: Unix timestamp when the cached status expires
     """
 
     online: bool
@@ -82,7 +82,7 @@ class StatusResponse:
     ip_address: str | None
     eula_blocked: bool | None
     retrieved_at: int | None
-    expiries_at: int | None
+    expires_at: int | None
 
 
 # Java Constants
@@ -194,7 +194,7 @@ class JavaServerStatusOffline:
         ip_address: Server IP address (if resolvable)
         eula_blocked: Whether the server is EULA blocked
         retrieved_at: Unix timestamp of retrieval
-        expiries_at: Unix timestamp of cache expiry
+        expires_at: Unix timestamp of cache expiry
         srv: SRV record information (if available)
     """
 
@@ -204,7 +204,7 @@ class JavaServerStatusOffline:
     ip_address: str | None
     eula_blocked: bool | None
     retrieved_at: int | None
-    expiries_at: int | None
+    expires_at: int | None
     srv: JavaSRV | None
 
 
@@ -253,7 +253,7 @@ class BedrockServerStatusOffline:
         ip_address: Server IP address (if resolvable)
         eula_blocked: Whether the server is EULA blocked
         retrieved_at: Unix timestamp of retrieval
-        expiries_at: Unix timestamp of cache expiry
+        expires_at: Unix timestamp of cache expiry
     """
 
     online: bool
@@ -261,7 +261,7 @@ class BedrockServerStatusOffline:
     ip_address: str | None
     eula_blocked: bool
     retrieved_at: int
-    expiries_at: int
+    expires_at: int
 
 
 # All

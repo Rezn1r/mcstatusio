@@ -130,7 +130,7 @@ class JavaServer:
                 ip_address=data["ip_address"],
                 eula_blocked=data.get("eula_blocked"),
                 retrieved_at=data.get("retrieved_at", 0),
-                expiries_at=data.get("expiries_at"),
+                expires_at=data.get("expires_at"),
                 port=data["port"],
                 version=JavaVersion(
                     name=JavaVersionName(
@@ -165,7 +165,7 @@ class JavaServer:
                 ip_address=data.get("ip_address"),
                 eula_blocked=data.get("eula_blocked"),
                 retrieved_at=data.get("retrieved_at"),
-                expiries_at=data.get("expiries_at"),
+                expires_at=data.get("expires_at"),
                 srv=data.get("srv"),
             )
 

@@ -121,7 +121,7 @@ class BedrockServer:
                 ip_address=data["ip_address"],
                 eula_blocked=data.get("eula_blocked"),
                 retrieved_at=data.get("retrieved_at"),
-                expiries_at=data.get("expiries_at"),
+                expires_at=data.get("expires_at"),
                 port=data["port"],
                 version=BedrockVersion(
                     name=data["version"].get("name"),
@@ -146,7 +146,7 @@ class BedrockServer:
                 ip_address=data.get("ip_address"),
                 eula_blocked=data.get("eula_blocked", False),
                 retrieved_at=data.get("retrieved_at", 0),
-                expiries_at=data.get("expiries_at", 0),
+                expires_at=data.get("expires_at", 0),
             )
 
     def status(self) -> BedrockServerStatusResponse | BedrockServerStatusOffline:
