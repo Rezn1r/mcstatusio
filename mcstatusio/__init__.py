@@ -21,4 +21,4 @@ from .JavaServer import JavaServer
 from . import error
 
 __all__ = ["BedrockServer", "JavaServer", "error"]
-__version__ = "1.1.0"
+__version__ = "1.1.1"
