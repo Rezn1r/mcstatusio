@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v1.1.1] - 2026-01-30
+
+
+
+### BUG FIXES
+
+- Correct spelling of 'expires_at' in Bedrock and Java server status handling ([`54088a7`](https://github.com/Rezn1r/mcstatusio/commit/54088a7133363a9d15913465e10439d294e49161))
+
+
 ## [v1.1.0] - 2026-01-25
 
 
